@@ -8,6 +8,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
+import ru.kirill.ecquizgame.game.GamePage
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -25,7 +26,7 @@ class ScenarioTest {
     @Before
     fun setUp() {
         gamePage = GamePage(question = "What is the capital of France?",
-            choices = listOf("Berlin", "Madrid", "Paris", "Rome"),
+            choices = listOf("Berlin", "Madrid", "Paris", "Rome"))
     }
 
     @Test
