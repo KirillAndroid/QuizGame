@@ -10,7 +10,7 @@ class GameViewModelTest {
 
     @Before
     fun setup() {
-        viewModel = GameViewModel()
+        viewModel = GameViewModel(repository = FakeRepository())
     }
 
     @Test
@@ -26,9 +26,9 @@ class GameViewModelTest {
         expected = GameUiState.ChoiceMade(
             question = "q1",
             choices = listOf(ChoiceUiState.NotAvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"))
+                ChoiceUiState.AvailableToChoose(text = "c2"),
+                ChoiceUiState.AvailableToChoose(text = "c3"),
+                ChoiceUiState.AvailableToChoose(text = "c4"))
         )
         assertEquals(expected, actual)
 
@@ -56,9 +56,9 @@ class GameViewModelTest {
         expected = GameUiState.ChoiceMade(
             question = "q1",
             choices = listOf(ChoiceUiState.NotAvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"))
+                ChoiceUiState.AvailableToChoose(text = "c2"),
+                ChoiceUiState.AvailableToChoose(text = "c3"),
+                ChoiceUiState.AvailableToChoose(text = "c4"))
         )
         assertEquals(expected, actual)
 
@@ -66,9 +66,9 @@ class GameViewModelTest {
         expected = GameUiState.ChoiceMade(
             question = "q1",
             choices = listOf(ChoiceUiState.AvailableToChoose(text = "c1"),
-                ChoiceUiState.NotAvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"),
-                ChoiceUiState.AvailableToChoose(text = "c1"))
+                ChoiceUiState.NotAvailableToChoose(text = "c2"),
+                ChoiceUiState.AvailableToChoose(text = "c3"),
+                ChoiceUiState.AvailableToChoose(text = "c4"))
         )
         assertEquals(expected, actual)
 
@@ -83,7 +83,7 @@ class GameViewModelTest {
         assertEquals(expected, actual)
 
         actual = viewModel.next()
-        var expected: GameUiState = GameUiState.AskedQuestion(
+        expected  = GameUiState.AskedQuestion(
             question = "q2",
             choices = listOf("cd1", "cd2", "cd3", "cd4")
         ) //то чему будет равно
