@@ -1,6 +1,7 @@
 package ru.kirill.ecquizgame.game
 
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -9,6 +10,8 @@ import org.hamcrest.Matcher
 import ru.kirill.ecquizgame.R
 
 class GamePage(question: String, choices: List<String>) {
+    private val buttonContainerIdMatcher: Matcher<View> = withParent(withId(R.id.button_container))
+    private val buttonClassTypeMatcher: Matcher<View> = withParent(isAssignableFrom(FrameLayout::class.java))
     private val containerIdMatcher: Matcher<View> = withParent(withId(R.id.game_container))
     private val classTypeMatcher: Matcher<View> = withParent(isAssignableFrom(LinearLayout::class.java))
 
@@ -23,8 +26,8 @@ class GamePage(question: String, choices: List<String>) {
     private val choicesUiList = choices.mapIndexed {index, string ->
         ChoiceUI(id = choicesUiListIds[index], colorHex = "#7223D3", text = string, containerIdMatcher = containerIdMatcher, classTypeMatcher = classTypeMatcher)
     }
-    private val checkUI: ButtonUI = ButtonUI(id = R.id.checkButton, textResId = R.string.check, containerIdMatcher = containerIdMatcher, classTypeMatcher = classTypeMatcher)
-    private val nextUI: ButtonUI = ButtonUI(id = R.id.nextButton, textResId = R.string.next, containerIdMatcher = containerIdMatcher, classTypeMatcher = classTypeMatcher)
+    private val checkUI: ButtonUI = ButtonUI(id = R.id.checkButton, textResId = R.string.check, containerIdMatcher = buttonContainerIdMatcher, classTypeMatcher = buttonClassTypeMatcher)
+    private val nextUI: ButtonUI = ButtonUI(id = R.id.nextButton, textResId = R.string.next, containerIdMatcher = buttonContainerIdMatcher, classTypeMatcher = buttonClassTypeMatcher)
 
     fun assertAskedQuestionState() {
         questionUi.assertTextIsDisplayed()

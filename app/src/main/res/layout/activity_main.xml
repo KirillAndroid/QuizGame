@@ -5,6 +5,7 @@
     android:id="@+id/game_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0A002A"
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
     tools:context=".MainActivity">
@@ -13,57 +14,79 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/question_textview"
-        tools:text="Example question?"
-        android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="8dp"
         android:gravity="center"
-        />
+        android:paddingVertical="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        tools:text="Example question?" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatButton
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#FFFFFF" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatButton
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#FFFFFF" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/thirdChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatButton
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#FFFFFF" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/forthChoiceButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/checkButton"
-        android:text="@string/check"
+    <FrameLayout
+        android:id="@+id/button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/nextButton"
-        android:text="@string/next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:layout_marginBottom="16dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/checkButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D323BB"
+            android:text="@string/check"
+            android:textColor="#FFFFFF"
+            android:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D323BB"
+            android:text="@string/next"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
+
+    </FrameLayout>
 
 </LinearLayout>

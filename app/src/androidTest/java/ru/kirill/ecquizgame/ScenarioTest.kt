@@ -25,7 +25,7 @@ class ScenarioTest {
     @Before
     fun setUp() {
         gamePage = GamePage(question = "What is the capital of France?",
-            choices = listOf("Berlin", "Madrid", "Paris", "Rome"))
+            choices = listOf("Paris", "Madrid", "Berlin", "Rome"))
     }
 
     @Test

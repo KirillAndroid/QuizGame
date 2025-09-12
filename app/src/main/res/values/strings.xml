@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">ecQuizGame</string>
     <string name="check">check</string>
-    <string name="next">next\n</string>
+    <string name="next">next</string>
 </resources>
