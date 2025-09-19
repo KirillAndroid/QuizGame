@@ -5,8 +5,9 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatButton
 import ru.kirill.ecquizgame.databinding.ActivityMainBinding
 import androidx.core.graphics.toColorInt
+import java.io.Serializable
 
-interface GameUiState {
+interface GameUiState : Serializable{
 
     abstract class Abstract(val questionText: String,
                             val choiceUiStates : List<ChoiceUiState>,
@@ -58,7 +59,7 @@ interface GameUiState {
 
 }
 
-interface ChoiceUiState {
+interface ChoiceUiState : Serializable {
     fun update(appButton: AppCompatButton)
 
     abstract class Abstract(
