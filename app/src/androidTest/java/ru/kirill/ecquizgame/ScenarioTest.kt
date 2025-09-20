@@ -31,31 +31,38 @@ class ScenarioTest {
     @Test
     fun caseNumber1() {
         gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
 
         gamePage.clickFirstChoice()
         gamePage.assertFirstChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
 
         gamePage.clickCheckButton()
+        activityScenarioRule.scenario.recreate()
         gamePage.assertAnswerCheckedStateFirstIsCorrect()
     }
 
     @Test
     fun caseNumber2() {
         gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
 
         gamePage.clickFirstChoice()
         gamePage.assertFirstChoiceMadeState()
 
         gamePage.clickSecondChoice()
+        activityScenarioRule.scenario.recreate()
         gamePage.assertSecondChoiceMadeState()
 
         gamePage.clickCheckButton()
         gamePage.assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect()
+        activityScenarioRule.scenario.recreate()
 
         gamePage.clickNextButton()
 
         gamePage = GamePage(question = "What is the capital of Germany?",
             choices = listOf("Berlin", "Madrid", "Paris", "Rome"))
+        activityScenarioRule.scenario.recreate()
 
         gamePage.assertAskedQuestionState()
     }

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val viewModel: GameViewModel = GameViewModel(GameRepository.Base())
+        val viewModel: GameViewModel = (application as QuizGameApp).viewModel
         binding.firstChoiceButton.setOnClickListener {
             uiState = viewModel.chooseFirst()
             uiState.update(binding = binding)
@@ -59,8 +59,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-        uiState.update(binding = binding)
-        uiState = viewModel.init()
         uiState.update(binding = binding)
     }
 

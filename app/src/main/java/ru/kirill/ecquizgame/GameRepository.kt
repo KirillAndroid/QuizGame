@@ -1,5 +1,7 @@
 package ru.kirill.ecquizgame
 
+import android.content.SharedPreferences
+
 interface GameRepository {
     fun questionAndChoices(): QuestionChoices
     fun saveUserChoice(index: Int)
@@ -7,6 +9,8 @@ interface GameRepository {
     fun next()
 
     class Base(
+        private val index: IntCashe,
+        private val userChoiceIndex: IntCashe,
         private val questionChoices: List<QuestionChoices> = listOf<QuestionChoices>(
             QuestionChoices(
                 question = "What is the capital of France?",
@@ -23,20 +27,20 @@ interface GameRepository {
 
 
 
-        private var index: Int = 0
-        private var userChoiceIndex = -1
+//        private var index = IntCashe.Base(sharedPreferences, "index")
+//        private var userChoiceIndex = IntCashe.Base(sharedPreferences, "userChoiceIndex")
 
         override fun questionAndChoices() : QuestionChoices {
-            return questionChoices[index]
+            return questionChoices[index.read(0)]
         }
 
         override fun saveUserChoice(index: Int) {
-            userChoiceIndex = index
+            userChoiceIndex.save(index)
         }
 
         override fun check() : CorrectAndUserChoiceIndexes {
             val correctIndex : Int = questionAndChoices().correctIndex
-            val userChoiceIndex: Int = userChoiceIndex
+            val userChoiceIndex: Int = userChoiceIndex.read(-1)
             return CorrectAndUserChoiceIndexes(
                 correctIndex = correctIndex,
                 userChoiceIndex = userChoiceIndex
@@ -44,9 +48,9 @@ interface GameRepository {
         }
 
         override fun next() {
-            userChoiceIndex = -1
-            index++
-            if (index == questionChoices.size) index = 0
+            userChoiceIndex.save(-1)
+            index.save(index.read(0) + 1)
+            if (index.read(0) == questionChoices.size) index.save(0)
         }
 
     }
