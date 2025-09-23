@@ -15,9 +15,9 @@ class ChoiceButtonSaveState : View.BaseSavedState {
     private constructor(parcelIn: Parcel) : super(parcelIn) {
         Log.d("dd33", "constructor inside choiceButtonSaveState")
         state = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            parcelIn.readParcelable(ChoiceUiState::class.java.classLoader, ChoiceUiState::class.java)!!
+            parcelIn.readSerializable(ChoiceUiState::class.java.classLoader, ChoiceUiState::class.java) as ChoiceUiState
         } else {
-            parcelIn.readParcelable(ChoiceUiState::class.java.classLoader)!!
+            parcelIn.readSerializable() as ChoiceUiState
         }
     }
 

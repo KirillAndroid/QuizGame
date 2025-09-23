@@ -16,9 +16,9 @@ class VisibilityStateSaved : View.BaseSavedState {
     private constructor(parcelIn: Parcel) : super(parcelIn) {
         Log.d("dd33", "constructor inside choiceButtonSaveState")
         state = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            parcelIn.readParcelable(VisibilityState::class.java.classLoader, VisibilityState::class.java)!!
+            parcelIn.readSerializable(VisibilityState::class.java.classLoader, VisibilityState::class.java) as VisibilityState
         } else {
-            parcelIn.readParcelable(VisibilityState::class.java.classLoader)!!
+            parcelIn.readSerializable() as VisibilityState
         }
     }
 
