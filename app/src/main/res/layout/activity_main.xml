@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <TextView
+    <ru.kirill.ecquizgame.QuestionTextView
         android:id="@+id/question_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,28 +31,28 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ru.kirill.ecquizgame.ChoiceButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#FFFFFF" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ru.kirill.ecquizgame.ChoiceButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#FFFFFF" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ru.kirill.ecquizgame.ChoiceButton
         android:id="@+id/thirdChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#FFFFFF" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ru.kirill.ecquizgame.ChoiceButton
         android:id="@+id/forthChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ru.kirill.ecquizgame.VisibilityButton
             android:id="@+id/checkButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:textColor="#FFFFFF"
             android:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ru.kirill.ecquizgame.VisibilityButton
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

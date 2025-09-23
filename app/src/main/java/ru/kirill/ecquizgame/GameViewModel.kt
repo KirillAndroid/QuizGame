@@ -5,12 +5,11 @@ class GameViewModel(private val repository : GameRepository) {
         repository.saveUserChoice(0)
         val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
-            question = data.question,
             choices = listOf(
-                ChoiceUiState.NotAvailableToChoose(text = data.choices[0]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[1]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[2]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[3])
+                ChoiceUiState.NotAvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose
             )
         )
     }
@@ -19,12 +18,11 @@ class GameViewModel(private val repository : GameRepository) {
         repository.saveUserChoice(1)
         val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
-            question = data.question,
             choices = listOf(
-                ChoiceUiState.AvailableToChoose(text = data.choices[0]),
-                ChoiceUiState.NotAvailableToChoose(text = data.choices[1]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[2]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[3])
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.NotAvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose
             )
         )
     }
@@ -33,12 +31,11 @@ class GameViewModel(private val repository : GameRepository) {
         repository.saveUserChoice(2)
         val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
-            question = data.question,
             choices = listOf(
-                ChoiceUiState.AvailableToChoose(text = data.choices[0]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[1]),
-                ChoiceUiState.NotAvailableToChoose(text = data.choices[2]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[3])
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.NotAvailableToChoose,
+                ChoiceUiState.AvailableToChoose
             )
         )
     }
@@ -47,12 +44,11 @@ class GameViewModel(private val repository : GameRepository) {
         repository.saveUserChoice(3)
         val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
-            question = data.question,
             choices = listOf(
-                ChoiceUiState.AvailableToChoose(text = data.choices[0]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[1]),
-                ChoiceUiState.AvailableToChoose(text = data.choices[2]),
-                ChoiceUiState.NotAvailableToChoose(text = data.choices[3])
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.NotAvailableToChoose
             )
         )
     }
@@ -65,18 +61,17 @@ class GameViewModel(private val repository : GameRepository) {
         val choicesUiState = questionData.choices.mapIndexed { index, choiceText ->
             when {
                 // The choice at the correct index is always marked as Correct.
-                index == correctIndex -> ChoiceUiState.Correct(choiceText)
+                index == correctIndex -> ChoiceUiState.Correct
 
                 // If the user chose this index and it's not the correct one, mark it as Incorrect.
-                index == userChoiceIndex -> ChoiceUiState.InCorrect(choiceText)
+                index == userChoiceIndex -> ChoiceUiState.InCorrect
 
                 // All other choices were not selected and are now unavailable.
-                else -> ChoiceUiState.NotAvailableToChoose(choiceText)
+                else -> ChoiceUiState.NotAvailableToChoose
             }
         }
 
         return GameUiState.AnswerChecked(
-            question = questionData.question,
             choices = choicesUiState
         )
     }
