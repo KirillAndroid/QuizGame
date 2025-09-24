@@ -1,40 +1,38 @@
 package ru.kirill.ecquizgame.game
 
 import android.view.View
-import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.not
 import ru.kirill.ecquizgame.R
 
-class QuestionUi(
-    text: String,
+class StatisticsUi(
+    correct: Int,
+    incorrect: Int,
     containerIdMatcher: Matcher<View>,
     classTypeMatcher: Matcher<View>
 ) {
+    private val text = "Statistics: Correct = $correct, Incorrect = $incorrect"
     private val interaction: ViewInteraction = onView(
         allOf(
             withText(text),
+            withId(R.id.statisticsTextView),
             containerIdMatcher,
-            classTypeMatcher,
-            withId(R.id.question_textview),
-            isAssignableFrom(TextView::class.java)
+            classTypeMatcher
         )
     )
+
     fun assertTextIsDisplayed() {
         interaction.check(matches(isDisplayed()))
     }
 
-    fun assertDoesntExists() {
+    fun assertDoesNotExists() {
         interaction.check(doesNotExist())
     }
-
 }

@@ -2,11 +2,11 @@ package ru.kirill.ecquizgame
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.junit.Test
-
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
+import ru.kirill.ecquizgame.game.GameOverPage
 import ru.kirill.ecquizgame.game.GamePage
 
 /**
@@ -24,8 +24,10 @@ class ScenarioTest {
 
     @Before
     fun setUp() {
-        gamePage = GamePage(question = "What is the capital of France?",
-            choices = listOf("Paris", "Madrid", "Berlin", "Rome"))
+        gamePage = GamePage(
+            question = "What is the capital of France?",
+            choices = listOf("Paris", "Madrid", "Berlin", "Rome")
+        )
     }
 
     @Test
@@ -60,10 +62,144 @@ class ScenarioTest {
 
         gamePage.clickNextButton()
 
-        gamePage = GamePage(question = "What is the capital of Germany?",
-            choices = listOf("Berlin", "Madrid", "Paris", "Rome"))
+        gamePage = GamePage(
+            question = "What is the capital of Germany?",
+            choices = listOf("Berlin", "Madrid", "Paris", "Rome")
+        )
         activityScenarioRule.scenario.recreate()
 
         gamePage.assertAskedQuestionState()
+    }
+
+    @Test
+    fun caseNumber3() {
+        gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickCheckButton()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerCheckedStateFirstIsCorrect()
+
+        gamePage.clickNextButton()
+
+        gamePage = GamePage(
+            question = "What is the capital of Germany?",
+            choices = listOf("Berlin", "Madrid", "Paris", "Rome")
+        )
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.assertAskedQuestionState()
+
+        gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickCheckButton()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerCheckedStateFirstIsCorrect()
+
+        gamePage.clickNextButton()
+        gamePage.assertNotVisible()
+        var gameOverPage = GameOverPage(
+            correct = 2, incorrect = 0
+        )
+        gameOverPage.assertGameOverState()
+        activityScenarioRule.scenario.recreate()
+        gameOverPage.clickNewGameButton()
+        gameOverPage.assertNotVisible()
+
+        gamePage = GamePage(
+            question = "What color is the blood",
+            choices = listOf("red", "green", "blue", "yellow")
+        )
+
+
+        gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickSecondChoice()
+        gamePage.assertSecondChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickCheckButton()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect()
+
+        gamePage.clickNextButton()
+
+        gamePage = GamePage(
+            question = "What color is the sun",
+            choices = listOf("yellow", "green", "blue", "purple")
+        )
+
+        gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickSecondChoice()
+        gamePage.assertSecondChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickCheckButton()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect()
+
+        gamePage.clickNextButton()
+        gamePage.assertNotVisible()
+        gameOverPage = GameOverPage(
+            correct = 0, incorrect = 2
+        )
+        gameOverPage.assertGameOverState()
+        activityScenarioRule.scenario.recreate()
+        gameOverPage.clickNewGameButton()
+        gameOverPage.assertNotVisible()
+
+        gamePage = GamePage(
+            question = "What color is the white house",
+            choices = listOf("white", "green", "blue", "yellow")
+        )
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMadeState()
+
+
+        gamePage.clickCheckButton()
+        gamePage.assertAnswerCheckedStateFirstIsCorrect()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickNextButton()
+
+        gamePage = GamePage(
+            question = "What is the capital of Italy?",
+            choices = listOf("Rome", "Madrid", "Berlin", "Paris")
+        )
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.assertAskedQuestionState()
+
+        gamePage.clickSecondChoice()
+        gamePage.assertSecondChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+
+        gamePage.clickCheckButton()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect()
+
+        gamePage.clickNextButton()
+        gamePage.assertNotVisible()
+        gameOverPage = GameOverPage(
+            correct = 1, incorrect = 1
+        )
+        gameOverPage.assertGameOverState()
+
+
+
+
     }
 }
