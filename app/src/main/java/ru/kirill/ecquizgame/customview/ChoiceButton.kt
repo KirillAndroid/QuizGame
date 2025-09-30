@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame
+package ru.kirill.ecquizgame.customview
 
 import android.content.Context
 import android.graphics.Color
@@ -6,6 +6,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
+import ru.kirill.ecquizgame.ChoiceUiState
 
 class ChoiceButton : AppCompatButton, UpdateChoiceButton {
 

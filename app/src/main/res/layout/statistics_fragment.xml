@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/game_over_container"
+    android:layout_height="match_parent"
+    android:background="#0A002A"
+    >
+
+    <ru.kirill.ecquizgame.customview.stats.StatsTextView
+        android:id="@+id/statisticsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        tools:text="Statistics \n Correct: 2, Incorrect: 0"
+        android:gravity="center"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="8sp"
+        android:text="@string/newgame"
+        android:textSize="25sp"
+        android:id="@+id/newGameButton"
+        android:backgroundTint="#D323BB"
+        android:textStyle="bold"
+        />
+
+
+</FrameLayout>

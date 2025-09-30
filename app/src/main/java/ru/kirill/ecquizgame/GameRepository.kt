@@ -8,8 +8,18 @@ interface GameRepository {
     fun check(): CorrectAndUserChoiceIndexes
     fun next()
 
+    fun correct() : Int
+
+    fun incorrect() : Int
+
+    fun saveCorrect()
+
+    fun saveIncorrect()
+
     class Base(
         private val index: IntCashe,
+        private val correct: IntCashe,
+        private val incorrect: IntCashe,
         private val userChoiceIndex: IntCashe,
         private val questionChoices: List<QuestionChoices> = listOf<QuestionChoices>(
             QuestionChoices(
@@ -51,6 +61,22 @@ interface GameRepository {
             userChoiceIndex.save(-1)
             index.save(index.read(0) + 1)
             if (index.read(0) == questionChoices.size) index.save(0)
+        }
+
+        override fun correct(): Int {
+            return correct.read(0)
+        }
+
+        override fun incorrect(): Int {
+            return incorrect.read(0)
+        }
+
+        override fun saveCorrect() {
+            correct.save(correct.read(0) + 1)
+        }
+
+        override fun saveIncorrect() {
+            incorrect.save(incorrect.read(0) + 1)
         }
 
     }

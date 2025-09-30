@@ -1,11 +1,11 @@
 package ru.kirill.ecquizgame
 
-import android.graphics.Color
 import android.util.Log
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
-import ru.kirill.ecquizgame.databinding.ActivityMainBinding
-import androidx.core.graphics.toColorInt
+import ru.kirill.ecquizgame.customview.UpdateChoiceButton
+import ru.kirill.ecquizgame.customview.UpdateText
+import ru.kirill.ecquizgame.customview.UpdateVisibility
+import ru.kirill.ecquizgame.customview.VisibilityState
 import java.io.Serializable
 
 interface GameUiState : Serializable{
@@ -36,7 +36,7 @@ interface GameUiState : Serializable{
             thirdChoiceButton.update(ChoiceUiState.Initial(choices[2]))
             fourthChoiceButton.update(ChoiceUiState.Initial(choices[3]))
             checkButton.update(VisibilityState(View.GONE))
-            nextButton.update(VisibilityState(View.GONE ))
+            nextButton.update(VisibilityState(View.GONE))
         }
 
     }

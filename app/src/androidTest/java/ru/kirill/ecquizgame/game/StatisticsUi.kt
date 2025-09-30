@@ -18,7 +18,7 @@ class StatisticsUi(
     containerIdMatcher: Matcher<View>,
     classTypeMatcher: Matcher<View>
 ) {
-    private val text = "Statistics: Correct = $correct, Incorrect = $incorrect"
+    private val text = "Statistics: \n Correct = $correct, Incorrect = $incorrect"
     private val interaction: ViewInteraction = onView(
         allOf(
             withText(text),

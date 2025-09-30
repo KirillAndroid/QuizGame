@@ -1,10 +1,11 @@
-package ru.kirill.ecquizgame
+package ru.kirill.ecquizgame.customview
 
 import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import android.view.View
+import ru.kirill.ecquizgame.ChoiceUiState
 
 class ChoiceButtonSaveState : View.BaseSavedState {
 
@@ -27,7 +28,7 @@ class ChoiceButtonSaveState : View.BaseSavedState {
         out.writeSerializable(state)
     }
 
-    fun restore() : ChoiceUiState{
+    fun restore() : ChoiceUiState {
         Log.d("dd33", "restore inside choiceButtonSaveState")
         return state
     }

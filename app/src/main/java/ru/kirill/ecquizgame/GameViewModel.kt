@@ -3,7 +3,6 @@ package ru.kirill.ecquizgame
 class GameViewModel(private val repository : GameRepository) {
     fun chooseFirst() : GameUiState {
         repository.saveUserChoice(0)
-        val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
             choices = listOf(
                 ChoiceUiState.NotAvailableToChoose,
@@ -16,7 +15,6 @@ class GameViewModel(private val repository : GameRepository) {
 
     fun chooseSecond() : GameUiState{
         repository.saveUserChoice(1)
-        val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
             choices = listOf(
                 ChoiceUiState.AvailableToChoose,
@@ -42,7 +40,6 @@ class GameViewModel(private val repository : GameRepository) {
 
     fun chooseFourth() : GameUiState{
         repository.saveUserChoice(3)
-        val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
             choices = listOf(
                 ChoiceUiState.AvailableToChoose,

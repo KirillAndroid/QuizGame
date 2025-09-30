@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A002A"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    tools:context=".MainActivity">
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ru.kirill.ecquizgame.customview.QuestionTextView
+        android:id="@+id/question_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        tools:text="Example question?" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ru.kirill.ecquizgame.customview.ChoiceButton
+        android:id="@+id/firstChoiceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#FFFFFF" />
+
+    <ru.kirill.ecquizgame.customview.ChoiceButton
+        android:id="@+id/secondChoiceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#FFFFFF" />
+
+    <ru.kirill.ecquizgame.customview.ChoiceButton
+        android:id="@+id/thirdChoiceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="#FFFFFF" />
+
+    <ru.kirill.ecquizgame.customview.ChoiceButton
+        android:id="@+id/forthChoiceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <FrameLayout
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <ru.kirill.ecquizgame.customview.VisibilityButton
+            android:id="@+id/checkButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D323BB"
+            android:text="@string/check"
+            android:textColor="#FFFFFF"
+            android:visibility="visible" />
+
+        <ru.kirill.ecquizgame.customview.VisibilityButton
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D323BB"
+            android:text="@string/next"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+
+</LinearLayout>
