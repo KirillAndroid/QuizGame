@@ -1,11 +1,12 @@
-package ru.kirill.ecquizgame
+package ru.kirill.ecquizgame.gragments.game
 
 import android.util.Log
 import android.view.View
-import ru.kirill.ecquizgame.customview.UpdateChoiceButton
-import ru.kirill.ecquizgame.customview.UpdateText
-import ru.kirill.ecquizgame.customview.UpdateVisibility
-import ru.kirill.ecquizgame.customview.VisibilityState
+import ru.kirill.ecquizgame.customview.game.UpdateChoiceButton
+import ru.kirill.ecquizgame.customview.game.UpdateText
+import ru.kirill.ecquizgame.customview.game.UpdateVisibility
+import ru.kirill.ecquizgame.customview.game.VisibilityState
+import ru.kirill.ecquizgame.gragments.stats.NavigateToStats
 import java.io.Serializable
 
 interface GameUiState : Serializable{
@@ -18,7 +19,9 @@ interface GameUiState : Serializable{
                fourthChoiceButton: UpdateChoiceButton,
                checkButton: UpdateVisibility,
                nextButton: UpdateVisibility
-               )
+               ) = Unit
+
+    fun navigate(navigate: NavigateToStats) = Unit
 
     data class AskedQuestion(val question: String, val choices: List<String>) : GameUiState {
         override fun update(
@@ -81,15 +84,13 @@ interface GameUiState : Serializable{
     }
 
     object Empty : GameUiState {
-        override fun update(
-            questionTextView: UpdateText,
-            firstChoiceButton: UpdateChoiceButton,
-            secondChoiceButton: UpdateChoiceButton,
-            thirdChoiceButton: UpdateChoiceButton,
-            fourthChoiceButton: UpdateChoiceButton,
-            checkButton: UpdateVisibility,
-            nextButton: UpdateVisibility
-        ) = Unit
+
+    }
+
+    object Finish : GameUiState {
+        override fun navigate(navigate: NavigateToStats) {
+            navigate.navigateToStats()
+        }
     }
 
 

@@ -1,11 +1,11 @@
-package ru.kirill.ecquizgame.customview
+package ru.kirill.ecquizgame.customview.game
 
 import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import android.view.View
-import ru.kirill.ecquizgame.ChoiceUiState
+import ru.kirill.ecquizgame.gragments.game.ChoiceUiState
 
 class ChoiceButtonSaveState : View.BaseSavedState {
 

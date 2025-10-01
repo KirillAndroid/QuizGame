@@ -1,25 +1,19 @@
-package ru.kirill.ecquizgame
+package ru.kirill.ecquizgame.gragments.game
 
-import android.content.SharedPreferences
+import ru.kirill.ecquizgame.customview.game.CorrectAndUserChoiceIndexes
+import ru.kirill.ecquizgame.IntCashe
+import ru.kirill.ecquizgame.customview.game.QuestionChoices
 
 interface GameRepository {
     fun questionAndChoices(): QuestionChoices
     fun saveUserChoice(index: Int)
     fun check(): CorrectAndUserChoiceIndexes
     fun next()
+    fun isLastQuestion(): Boolean
 
-    fun correct() : Int
-
-    fun incorrect() : Int
-
-    fun saveCorrect()
-
-    fun saveIncorrect()
 
     class Base(
         private val index: IntCashe,
-        private val correct: IntCashe,
-        private val incorrect: IntCashe,
         private val userChoiceIndex: IntCashe,
         private val questionChoices: List<QuestionChoices> = listOf<QuestionChoices>(
             QuestionChoices(
@@ -35,10 +29,6 @@ interface GameRepository {
         )
     ) : GameRepository {
 
-
-
-//        private var index = IntCashe.Base(sharedPreferences, "index")
-//        private var userChoiceIndex = IntCashe.Base(sharedPreferences, "userChoiceIndex")
 
         override fun questionAndChoices() : QuestionChoices {
             return questionChoices[index.read(0)]
@@ -60,26 +50,12 @@ interface GameRepository {
         override fun next() {
             userChoiceIndex.save(-1)
             index.save(index.read(0) + 1)
-            if (index.read(0) == questionChoices.size) index.save(0)
         }
 
-        override fun correct(): Int {
-            return correct.read(0)
+        override fun isLastQuestion(): Boolean {
+            return index.read(0) == questionChoices.size
         }
-
-        override fun incorrect(): Int {
-            return incorrect.read(0)
-        }
-
-        override fun saveCorrect() {
-            correct.save(correct.read(0) + 1)
-        }
-
-        override fun saveIncorrect() {
-            incorrect.save(incorrect.read(0) + 1)
-        }
-
     }
+
+
 }
-
-

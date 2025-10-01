@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame
+package ru.kirill.ecquizgame.gragments.game
 
 class GameViewModel(private val repository : GameRepository) {
     fun chooseFirst() : GameUiState {
@@ -13,7 +13,7 @@ class GameViewModel(private val repository : GameRepository) {
         )
     }
 
-    fun chooseSecond() : GameUiState{
+    fun chooseSecond() : GameUiState {
         repository.saveUserChoice(1)
         return GameUiState.ChoiceMade(
             choices = listOf(
@@ -25,7 +25,7 @@ class GameViewModel(private val repository : GameRepository) {
         )
     }
 
-    fun chooseThird() : GameUiState{
+    fun chooseThird() : GameUiState {
         repository.saveUserChoice(2)
         val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
@@ -38,7 +38,7 @@ class GameViewModel(private val repository : GameRepository) {
         )
     }
 
-    fun chooseFourth() : GameUiState{
+    fun chooseFourth() : GameUiState {
         repository.saveUserChoice(3)
         return GameUiState.ChoiceMade(
             choices = listOf(
@@ -73,8 +73,11 @@ class GameViewModel(private val repository : GameRepository) {
         )
     }
 
-    fun next() : GameUiState{
+    fun next() : GameUiState {
         repository.next()
+        if (repository.isLastQuestion()) {
+            return GameUiState.Finish
+        }
         return init()
     }
 

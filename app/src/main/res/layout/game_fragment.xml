@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <ru.kirill.ecquizgame.customview.QuestionTextView
+    <ru.kirill.ecquizgame.customview.game.QuestionTextView
         android:id="@+id/question_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,28 +31,28 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <ru.kirill.ecquizgame.customview.ChoiceButton
+    <ru.kirill.ecquizgame.customview.game.ChoiceButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#FFFFFF" />
 
-    <ru.kirill.ecquizgame.customview.ChoiceButton
+    <ru.kirill.ecquizgame.customview.game.ChoiceButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#FFFFFF" />
 
-    <ru.kirill.ecquizgame.customview.ChoiceButton
+    <ru.kirill.ecquizgame.customview.game.ChoiceButton
         android:id="@+id/thirdChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColor="#FFFFFF" />
 
-    <ru.kirill.ecquizgame.customview.ChoiceButton
+    <ru.kirill.ecquizgame.customview.game.ChoiceButton
         android:id="@+id/forthChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
 
-        <ru.kirill.ecquizgame.customview.VisibilityButton
+        <ru.kirill.ecquizgame.customview.game.VisibilityButton
             android:id="@+id/checkButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:textColor="#FFFFFF"
             android:visibility="visible" />
 
-        <ru.kirill.ecquizgame.customview.VisibilityButton
+        <ru.kirill.ecquizgame.customview.game.VisibilityButton
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

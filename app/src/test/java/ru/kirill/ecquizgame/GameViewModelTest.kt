@@ -3,6 +3,12 @@ package ru.kirill.ecquizgame
 import org.junit.Assert.*;
 import org.junit.Before
 import org.junit.Test
+import ru.kirill.ecquizgame.customview.game.CorrectAndUserChoiceIndexes
+import ru.kirill.ecquizgame.customview.game.QuestionChoices
+import ru.kirill.ecquizgame.gragments.game.ChoiceUiState
+import ru.kirill.ecquizgame.gragments.game.GameRepository
+import ru.kirill.ecquizgame.gragments.game.GameUiState
+import ru.kirill.ecquizgame.gragments.game.GameViewModel
 
 class GameViewModelTest {
 
@@ -24,7 +30,8 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFirst()
         expected = GameUiState.ChoiceMade(
-            choices = listOf(ChoiceUiState.NotAvailableToChoose,
+            choices = listOf(
+                ChoiceUiState.NotAvailableToChoose,
                 ChoiceUiState.AvailableToChoose,
                 ChoiceUiState.AvailableToChoose,
                 ChoiceUiState.AvailableToChoose)
@@ -33,11 +40,42 @@ class GameViewModelTest {
 
         actual = viewModel.check()
         expected = GameUiState.AnswerChecked(
-            choices = listOf(ChoiceUiState.Correct,
+            choices = listOf(
+                ChoiceUiState.Correct,
                 ChoiceUiState.NotAvailableToChoose,
                 ChoiceUiState.NotAvailableToChoose,
                 ChoiceUiState.NotAvailableToChoose)
         )
+        assertEquals(expected, actual)
+
+        actual = viewModel.next()
+        expected  = GameUiState.AskedQuestion(
+            question = "q2",
+            choices = listOf("cd1", "cd2", "cd3", "cd4")
+        ) //то чему будет равно
+        assertEquals(expected, actual)
+
+        actual = viewModel.chooseSecond()
+        expected = GameUiState.ChoiceMade(
+            choices = listOf(
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.NotAvailableToChoose,
+                ChoiceUiState.AvailableToChoose,
+                ChoiceUiState.AvailableToChoose))
+        assertEquals(expected, actual)
+
+        actual = viewModel.check()
+        expected = GameUiState.AnswerChecked(
+            choices = listOf(
+                ChoiceUiState.Correct,
+                ChoiceUiState.InCorrect,
+                ChoiceUiState.NotAvailableToChoose,
+                ChoiceUiState.NotAvailableToChoose)
+        )
+        assertEquals(expected, actual)
+
+        actual = viewModel.next()
+        expected = GameUiState.Finish
         assertEquals(expected, actual)
     }
 
@@ -52,7 +90,8 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFirst()
         expected = GameUiState.ChoiceMade(
-            choices = listOf(ChoiceUiState.NotAvailableToChoose,
+            choices = listOf(
+                ChoiceUiState.NotAvailableToChoose,
                 ChoiceUiState.AvailableToChoose,
                 ChoiceUiState.AvailableToChoose,
                 ChoiceUiState.AvailableToChoose)
@@ -61,7 +100,8 @@ class GameViewModelTest {
 
         actual = viewModel.chooseSecond()
         expected = GameUiState.ChoiceMade(
-            choices = listOf(ChoiceUiState.AvailableToChoose,
+            choices = listOf(
+                ChoiceUiState.AvailableToChoose,
                 ChoiceUiState.NotAvailableToChoose,
                 ChoiceUiState.AvailableToChoose,
                 ChoiceUiState.AvailableToChoose)
@@ -70,7 +110,8 @@ class GameViewModelTest {
 
         actual = viewModel.check()
         expected = GameUiState.AnswerChecked(
-            choices = listOf(ChoiceUiState.Correct,
+            choices = listOf(
+                ChoiceUiState.Correct,
                 ChoiceUiState.InCorrect,
                 ChoiceUiState.NotAvailableToChoose,
                 ChoiceUiState.NotAvailableToChoose)
@@ -122,6 +163,10 @@ private class FakeRepository: GameRepository {
     override fun next() {
         userChoiceIndex = -1
         index++
-        if (index == questionChoices.size) index = 0
+//        if (isLastQuestion()) index = 0
+    }
+
+    override fun isLastQuestion() : Boolean {
+        return index == questionChoices.size
     }
 }

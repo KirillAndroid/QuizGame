@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.customview
+package ru.kirill.ecquizgame.customview.game
 
 import android.os.Build
 import android.os.Parcel

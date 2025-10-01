@@ -26,12 +26,12 @@ class StatsFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel = (requireActivity().application as QuizGameApp).statsViewModel
-
-        binding.statisticsTextView.update(viewModel.statsUiState)
+        val statsUiState = viewModel.statsUiState()
+        statsUiState.update(binding.statisticsTextView, binding.newGameButton)
+//        binding.statisticsTextView.update(StatsTextViewState)
         binding.newGameButton.setOnClickListener {
             (requireActivity() as NavigateToGame).navigateToGame()
         }
-
     }
 
     override fun onDestroyView() {
