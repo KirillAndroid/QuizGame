@@ -11,6 +11,8 @@ interface GameRepository {
     fun next()
     fun isLastQuestion(): Boolean
 
+    fun resetIndex()
+
 
     class Base(
         private val index: IntCashe,
@@ -54,6 +56,10 @@ interface GameRepository {
 
         override fun isLastQuestion(): Boolean {
             return index.read(0) == questionChoices.size
+        }
+
+        override fun resetIndex() {
+            index.save(0)
         }
     }
 

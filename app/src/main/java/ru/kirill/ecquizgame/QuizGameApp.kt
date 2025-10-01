@@ -3,6 +3,7 @@ package ru.kirill.ecquizgame
 import android.app.Application
 import ru.kirill.ecquizgame.gragments.game.GameRepository
 import ru.kirill.ecquizgame.gragments.game.GameViewModel
+import ru.kirill.ecquizgame.gragments.stats.StatsRepository
 import ru.kirill.ecquizgame.gragments.stats.StatsViewModel
 
 class QuizGameApp : Application(){
@@ -23,7 +24,10 @@ class QuizGameApp : Application(){
 //            incorrect = IntCashe.Base(sharedPreferences, "incorrect"),
 //            index = IntCashe.Base(sharedPreferences,"index"),
 //            userChoiceIndex = IntCashe.Base(sharedPreferences, "userChoiceIndex")))
-//        statsViewModel = StatsViewModel()
+        statsViewModel = StatsViewModel(StatsRepository.Base(
+            correct = IntCashe.Base(sharedPreferences, "correct"),
+            incorrect = IntCashe.Base(sharedPreferences, "incorrect")
+        ))
     }
 }
 

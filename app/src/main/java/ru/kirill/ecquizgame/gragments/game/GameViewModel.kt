@@ -27,7 +27,6 @@ class GameViewModel(private val repository : GameRepository) {
 
     fun chooseThird() : GameUiState {
         repository.saveUserChoice(2)
-        val data = repository.questionAndChoices()
         return GameUiState.ChoiceMade(
             choices = listOf(
                 ChoiceUiState.AvailableToChoose,
@@ -76,6 +75,7 @@ class GameViewModel(private val repository : GameRepository) {
     fun next() : GameUiState {
         repository.next()
         if (repository.isLastQuestion()) {
+            repository.resetIndex()
             return GameUiState.Finish
         }
         return init()

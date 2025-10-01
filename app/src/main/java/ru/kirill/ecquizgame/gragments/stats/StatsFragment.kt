@@ -28,7 +28,6 @@ class StatsFragment : Fragment(){
         val viewModel = (requireActivity().application as QuizGameApp).statsViewModel
         val statsUiState = viewModel.statsUiState()
         statsUiState.update(binding.statisticsTextView, binding.newGameButton)
-//        binding.statisticsTextView.update(StatsTextViewState)
         binding.newGameButton.setOnClickListener {
             (requireActivity() as NavigateToGame).navigateToGame()
         }
