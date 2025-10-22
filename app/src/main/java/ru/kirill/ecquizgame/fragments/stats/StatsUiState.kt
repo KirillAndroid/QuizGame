@@ -15,4 +15,8 @@ interface StatsUiState : Serializable {
             newGameButton.isEnabled = true
         }
     }
+
+    object Empty : StatsUiState {
+        override fun update(statsTextViewModel: StatsTextView, newGameButton: AppCompatButton) = Unit
+    }
 }

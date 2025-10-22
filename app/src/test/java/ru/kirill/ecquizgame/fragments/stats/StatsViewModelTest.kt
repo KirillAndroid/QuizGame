@@ -11,9 +11,11 @@ class StatsViewModelTest {
         val repository = FakeRepository()
         val viewModel = StatsViewModel(repository = repository)
 
-        assertEquals(StatsUiState.Base(2, 3), viewModel.statsUiState())
+        assertEquals(StatsUiState.Base(2, 3), viewModel.init(isFirstRun = true))
 
-        viewModel.reset()
+        assertEquals(true, repository.resetCalled())
+
+        assertEquals(StatsUiState.Empty, viewModel.init(isFirstRun = false))
         assertEquals(true, repository.resetCalled())
     }
 }
@@ -24,13 +26,13 @@ class FakeRepository : StatsRepository {
         return Pair(2, 3)
     }
 
-    val resetCalled = mutableListOf<Boolean>()
+    var resetCalled = 0
     override fun reset() {
-        resetCalled.add(true)
+        resetCalled++
         //nothing to do here
     }
 
     fun resetCalled() : Boolean {
-        return resetCalled.last()
+        return resetCalled != 0
     }
 }

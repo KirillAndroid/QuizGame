@@ -9,5 +9,15 @@ class StatsViewModel(private val repository: StatsRepository) {
     fun reset() {
         repository.reset()
     }
+
+    fun init(isFirstRun: Boolean): StatsUiState {
+        if (isFirstRun) {
+            val stats = repository.stats()
+            repository.reset()
+            return StatsUiState.Base(stats.first, stats.second)
+        } else {
+            return StatsUiState.Empty
+        }
+    }
 }
 
