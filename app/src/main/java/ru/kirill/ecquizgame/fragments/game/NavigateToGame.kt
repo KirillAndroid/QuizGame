@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.game
+package ru.kirill.ecquizgame.fragments.game
 
 interface NavigateToGame {
     fun navigateToGame()

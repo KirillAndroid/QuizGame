@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.stats
+package ru.kirill.ecquizgame.fragments.stats
 
 import androidx.appcompat.widget.AppCompatButton
 import ru.kirill.ecquizgame.customview.stats.StatsTextView

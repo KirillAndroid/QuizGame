@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.game
+package ru.kirill.ecquizgame.fragments.game
 
 import ru.kirill.ecquizgame.customview.game.CorrectAndUserChoiceIndexes
 import ru.kirill.ecquizgame.IntCashe
@@ -28,7 +28,9 @@ interface GameRepository {
                 choices = listOf("Berlin", "Madrid", "Paris", "Rome"),
                 correctIndex = 0
             )
-        )
+        ),
+        private val correct: IntCashe.Base,
+        private val incorrect: IntCashe.Base
     ) : GameRepository {
 
 
@@ -42,10 +44,14 @@ interface GameRepository {
 
         override fun check() : CorrectAndUserChoiceIndexes {
             val correctIndex : Int = questionAndChoices().correctIndex
-            val userChoiceIndex: Int = userChoiceIndex.read(-1)
+            if (userChoiceIndex.read(-1) == correctIndex) {
+                correct.save(correct.read(0) + 1)
+            } else {
+                incorrect.save(incorrect.read(0) + 1)
+            }
             return CorrectAndUserChoiceIndexes(
                 correctIndex = correctIndex,
-                userChoiceIndex = userChoiceIndex
+                userChoiceIndex = userChoiceIndex.read(-1)
             )
         }
 

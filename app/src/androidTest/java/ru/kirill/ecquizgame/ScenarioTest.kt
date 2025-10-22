@@ -112,10 +112,12 @@ class ScenarioTest {
         gameOverPage.clickNewGameButton()
         gameOverPage.assertNotVisible()
 
-        gamePage = GamePage(
-            question = "What color is the blood",
-            choices = listOf("red", "green", "blue", "yellow")
-        )
+        setUp()
+
+//        gamePage = GamePage(
+//            question = "What color is the blood",
+//            choices = listOf("red", "green", "blue", "yellow")
+//        )
 
 
         gamePage.assertAskedQuestionState()
@@ -132,8 +134,8 @@ class ScenarioTest {
         gamePage.clickNextButton()
 
         gamePage = GamePage(
-            question = "What color is the sun",
-            choices = listOf("yellow", "green", "blue", "purple")
+            question = "What is the capital of Germany?",
+            choices = listOf("Berlin", "Madrid", "Paris", "Rome")
         )
 
         gamePage.assertAskedQuestionState()
@@ -157,10 +159,12 @@ class ScenarioTest {
         gameOverPage.clickNewGameButton()
         gameOverPage.assertNotVisible()
 
-        gamePage = GamePage(
-            question = "What color is the white house",
-            choices = listOf("white", "green", "blue", "yellow")
-        )
+        setUp()
+
+//        gamePage = GamePage(
+//            question = "What color is the white house",
+//            choices = listOf("white", "green", "blue", "yellow")
+//        )
         activityScenarioRule.scenario.recreate()
 
         gamePage.assertAskedQuestionState()
@@ -176,8 +180,8 @@ class ScenarioTest {
         gamePage.clickNextButton()
 
         gamePage = GamePage(
-            question = "What is the capital of Italy?",
-            choices = listOf("Rome", "Madrid", "Berlin", "Paris")
+            question = "What is the capital of Germany?",
+            choices = listOf("Berlin", "Madrid", "Paris", "Rome")
         )
         activityScenarioRule.scenario.recreate()
 

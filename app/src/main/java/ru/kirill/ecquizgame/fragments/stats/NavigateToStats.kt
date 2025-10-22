@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.stats
+package ru.kirill.ecquizgame.fragments.stats
 
 interface NavigateToStats {
     fun navigateToStats()

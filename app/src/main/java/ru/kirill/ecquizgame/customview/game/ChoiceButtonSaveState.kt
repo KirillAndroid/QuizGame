@@ -5,7 +5,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import android.view.View
-import ru.kirill.ecquizgame.gragments.game.ChoiceUiState
+import ru.kirill.ecquizgame.fragments.game.ChoiceUiState
 
 class ChoiceButtonSaveState : View.BaseSavedState {
 

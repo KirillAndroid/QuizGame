@@ -5,10 +5,10 @@ import org.junit.Before
 import org.junit.Test
 import ru.kirill.ecquizgame.customview.game.CorrectAndUserChoiceIndexes
 import ru.kirill.ecquizgame.customview.game.QuestionChoices
-import ru.kirill.ecquizgame.gragments.game.ChoiceUiState
-import ru.kirill.ecquizgame.gragments.game.GameRepository
-import ru.kirill.ecquizgame.gragments.game.GameUiState
-import ru.kirill.ecquizgame.gragments.game.GameViewModel
+import ru.kirill.ecquizgame.fragments.game.ChoiceUiState
+import ru.kirill.ecquizgame.fragments.game.GameRepository
+import ru.kirill.ecquizgame.fragments.game.GameUiState
+import ru.kirill.ecquizgame.fragments.game.GameViewModel
 
 class GameViewModelTest {
 
@@ -151,9 +151,15 @@ private class FakeRepository: GameRepository {
         userChoiceIndex = index
     }
 
+    var correct: Int = 0
+    var incorrect: Int = 0
     override fun check() : CorrectAndUserChoiceIndexes {
         val correctIndex : Int = questionAndChoices().correctIndex
-        val userChoiceIndex: Int = userChoiceIndex
+        if (userChoiceIndex == correctIndex) {
+            correct++
+        } else {
+            incorrect++
+        }
         return CorrectAndUserChoiceIndexes(
             correctIndex = correctIndex,
             userChoiceIndex = userChoiceIndex
@@ -168,5 +174,9 @@ private class FakeRepository: GameRepository {
 
     override fun isLastQuestion() : Boolean {
         return index == questionChoices.size
+    }
+
+    override fun resetIndex() {
+        index = 0
     }
 }

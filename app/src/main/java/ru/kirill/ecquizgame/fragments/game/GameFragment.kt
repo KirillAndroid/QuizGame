@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.game
+package ru.kirill.ecquizgame.fragments.game
 
 import android.os.Bundle
 import android.util.Log
@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.kirill.ecquizgame.gragments.game.GameViewModel
 import ru.kirill.ecquizgame.QuizGameApp
 import ru.kirill.ecquizgame.databinding.GameFragmentBinding
-import ru.kirill.ecquizgame.gragments.stats.NavigateToStats
+import ru.kirill.ecquizgame.fragments.stats.NavigateToStats
 
 class GameFragment : Fragment() {
     private var _binding: GameFragmentBinding? = null

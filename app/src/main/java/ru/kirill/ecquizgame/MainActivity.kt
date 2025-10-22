@@ -3,25 +3,25 @@ package ru.kirill.ecquizgame
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import ru.kirill.ecquizgame.gragments.game.GameScreen
-import ru.kirill.ecquizgame.gragments.game.GameUiState
-import ru.kirill.ecquizgame.gragments.game.NavigateToGame
-import ru.kirill.ecquizgame.gragments.stats.NavigateToStats
-import ru.kirill.ecquizgame.gragments.stats.StatsScreen
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import ru.kirill.ecquizgame.fragments.game.GameScreen
+import ru.kirill.ecquizgame.fragments.game.NavigateToGame
+import ru.kirill.ecquizgame.fragments.stats.NavigateToStats
+import ru.kirill.ecquizgame.fragments.stats.StatsScreen
 
-class MainActivity : AppCompatActivity(), Navigate{
-    private lateinit var uiState: GameUiState
+class MainActivity : AppCompatActivity(), Navigate {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 //        val binding = GameFragmentBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.game_container)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.container)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         if (savedInstanceState == null) {
             navigateToGame()
         }

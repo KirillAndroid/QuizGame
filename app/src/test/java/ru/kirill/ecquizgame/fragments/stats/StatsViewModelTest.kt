@@ -1,9 +1,7 @@
-package ru.kirill.ecquizgame.gragments.stats
+package ru.kirill.ecquizgame.fragments.stats
 
 import org.junit.Test
 import org.junit.Assert.*;
-import ru.kirill.ecquizgame.gragments.game.GameRepository
-import ru.kirill.ecquizgame.customview.stats.StatsTextViewState
 
 class StatsViewModelTest {
 
@@ -14,6 +12,9 @@ class StatsViewModelTest {
         val viewModel = StatsViewModel(repository = repository)
 
         assertEquals(StatsUiState.Base(2, 3), viewModel.statsUiState())
+
+        viewModel.reset()
+        assertEquals(true, repository.resetCalled())
     }
 }
 
@@ -21,5 +22,15 @@ class FakeRepository : StatsRepository {
 
     override fun stats() : Pair<Int, Int> {
         return Pair(2, 3)
+    }
+
+    val resetCalled = mutableListOf<Boolean>()
+    override fun reset() {
+        resetCalled.add(true)
+        //nothing to do here
+    }
+
+    fun resetCalled() : Boolean {
+        return resetCalled.last()
     }
 }

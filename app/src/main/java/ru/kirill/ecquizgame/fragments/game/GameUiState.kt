@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.game
+package ru.kirill.ecquizgame.fragments.game
 
 import android.util.Log
 import android.view.View
@@ -6,7 +6,7 @@ import ru.kirill.ecquizgame.customview.game.UpdateChoiceButton
 import ru.kirill.ecquizgame.customview.game.UpdateText
 import ru.kirill.ecquizgame.customview.game.UpdateVisibility
 import ru.kirill.ecquizgame.customview.game.VisibilityState
-import ru.kirill.ecquizgame.gragments.stats.NavigateToStats
+import ru.kirill.ecquizgame.fragments.stats.NavigateToStats
 import java.io.Serializable
 
 interface GameUiState : Serializable{

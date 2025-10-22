@@ -1,4 +1,4 @@
-package ru.kirill.ecquizgame.gragments.game
+package ru.kirill.ecquizgame.fragments.game
 
 class GameViewModel(private val repository : GameRepository) {
     fun chooseFirst() : GameUiState {

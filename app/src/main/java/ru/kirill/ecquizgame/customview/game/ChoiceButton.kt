@@ -6,7 +6,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
-import ru.kirill.ecquizgame.gragments.game.ChoiceUiState
+import ru.kirill.ecquizgame.fragments.game.ChoiceUiState
 
 class ChoiceButton : AppCompatButton, UpdateChoiceButton {
 

@@ -1,10 +1,10 @@
 package ru.kirill.ecquizgame
 
 import android.app.Application
-import ru.kirill.ecquizgame.gragments.game.GameRepository
-import ru.kirill.ecquizgame.gragments.game.GameViewModel
-import ru.kirill.ecquizgame.gragments.stats.StatsRepository
-import ru.kirill.ecquizgame.gragments.stats.StatsViewModel
+import ru.kirill.ecquizgame.fragments.game.GameRepository
+import ru.kirill.ecquizgame.fragments.game.GameViewModel
+import ru.kirill.ecquizgame.fragments.stats.StatsRepository
+import ru.kirill.ecquizgame.fragments.stats.StatsViewModel
 
 class QuizGameApp : Application(){
     lateinit var viewModel: GameViewModel
@@ -13,20 +13,20 @@ class QuizGameApp : Application(){
     override fun onCreate() {
         super.onCreate()
         val sharedPreferences = getSharedPreferences("quizGameDate", MODE_PRIVATE)
+        val correct = IntCashe.Base(sharedPreferences, "correct")
+        val incorrect = IntCashe.Base(sharedPreferences, "incorrect")
         viewModel = GameViewModel(
             GameRepository.Base(
                 index = IntCashe.Base(sharedPreferences, "index"),
-                userChoiceIndex = IntCashe.Base(sharedPreferences, "userChoiceIndex")
+                userChoiceIndex = IntCashe.Base(sharedPreferences, "userChoiceIndex"),
+                correct = correct,
+                incorrect = incorrect
             )
         )
-//        statsViewModel = GameViewModel(GameRepository.Base(
-//            correct = IntCashe.Base(sharedPreferences, "correct"),
-//            incorrect = IntCashe.Base(sharedPreferences, "incorrect"),
-//            index = IntCashe.Base(sharedPreferences,"index"),
-//            userChoiceIndex = IntCashe.Base(sharedPreferences, "userChoiceIndex")))
+
         statsViewModel = StatsViewModel(StatsRepository.Base(
-            correct = IntCashe.Base(sharedPreferences, "correct"),
-            incorrect = IntCashe.Base(sharedPreferences, "incorrect")
+            correct = correct,
+            incorrect = incorrect
         ))
     }
 }

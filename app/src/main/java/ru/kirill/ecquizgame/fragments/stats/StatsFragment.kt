@@ -1,11 +1,11 @@
-package ru.kirill.ecquizgame.gragments.stats
+package ru.kirill.ecquizgame.fragments.stats
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.kirill.ecquizgame.gragments.game.NavigateToGame
+import ru.kirill.ecquizgame.fragments.game.NavigateToGame
 import ru.kirill.ecquizgame.QuizGameApp
 import ru.kirill.ecquizgame.databinding.StatisticsFragmentBinding
 
@@ -29,6 +29,7 @@ class StatsFragment : Fragment(){
         val statsUiState = viewModel.statsUiState()
         statsUiState.update(binding.statisticsTextView, binding.newGameButton)
         binding.newGameButton.setOnClickListener {
+            viewModel.reset()
             (requireActivity() as NavigateToGame).navigateToGame()
         }
     }
