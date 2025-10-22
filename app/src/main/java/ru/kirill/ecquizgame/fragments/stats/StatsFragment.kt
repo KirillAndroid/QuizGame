@@ -29,9 +29,9 @@ class StatsFragment : Fragment(){
         val statsUiState = viewModel.statsUiState()
         statsUiState.update(binding.statisticsTextView, binding.newGameButton)
         binding.newGameButton.setOnClickListener {
-            viewModel.reset()
             (requireActivity() as NavigateToGame).navigateToGame()
         }
+        viewModel.reset()
     }
 
     override fun onDestroyView() {
