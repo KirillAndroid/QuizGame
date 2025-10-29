@@ -5,10 +5,12 @@ import org.junit.Before
 import org.junit.Test
 import ru.kirill.ecquizgame.customview.game.CorrectAndUserChoiceIndexes
 import ru.kirill.ecquizgame.customview.game.QuestionChoices
+import ru.kirill.ecquizgame.di.ProvideViewModel
 import ru.kirill.ecquizgame.fragments.game.ChoiceUiState
 import ru.kirill.ecquizgame.fragments.game.GameRepository
 import ru.kirill.ecquizgame.fragments.game.GameUiState
 import ru.kirill.ecquizgame.fragments.game.GameViewModel
+import ru.kirill.ecquizgame.fragments.game.di.ProvideGameViewModel
 
 class GameViewModelTest {
 
@@ -16,7 +18,12 @@ class GameViewModelTest {
 
     @Before
     fun setup() {
-        viewModel = GameViewModel(repository = FakeRepository())
+        val clear = object : ru.kirill.ecquizgame.di.ClearViewModel {
+            override fun clear(viewModelClass: Class<out ru.kirill.ecquizgame.fragments.MyViewModel>) {
+                //nothing to do here
+            }
+        }
+        viewModel = GameViewModel(clear = clear, repository = FakeRepository())
     }
 
     @Test

@@ -9,7 +9,12 @@ class StatsViewModelTest {
     @Test
     fun test() {
         val repository = FakeRepository()
-        val viewModel = StatsViewModel(repository = repository)
+        val clear = object : ru.kirill.ecquizgame.di.ClearViewModel {
+            override fun clear(viewModelClass: Class<out ru.kirill.ecquizgame.fragments.MyViewModel>) {
+                //nothing to do here
+            }
+        }
+        val viewModel = StatsViewModel(clearViewModel = clear, repository = repository)
 
         assertEquals(StatsUiState.Base(2, 3), viewModel.init(isFirstRun = true))
 

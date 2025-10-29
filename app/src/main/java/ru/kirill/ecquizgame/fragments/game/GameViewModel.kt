@@ -1,6 +1,9 @@
 package ru.kirill.ecquizgame.fragments.game
 
-class GameViewModel(private val repository : GameRepository) {
+import ru.kirill.ecquizgame.di.ClearViewModel
+import ru.kirill.ecquizgame.fragments.MyViewModel
+
+class GameViewModel(private val clear: ClearViewModel, private val repository : GameRepository) : MyViewModel {
     fun chooseFirst() : GameUiState {
         repository.saveUserChoice(0)
         return GameUiState.ChoiceMade(
@@ -76,6 +79,7 @@ class GameViewModel(private val repository : GameRepository) {
         repository.next()
         if (repository.isLastQuestion()) {
             repository.resetIndex()
+            clear.clear(GameViewModel::class.java)
             return GameUiState.Finish
         }
         return init()
