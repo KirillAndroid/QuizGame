@@ -210,6 +210,13 @@ class ScenarioTest {
     @Test
     fun testCase4() {
         val loadPage = LoadPage()
+
+        activityScenarioRule.scenario.recreate()
+        loadPage.assertProgressState()
+        activityScenarioRule.scenario.recreate()
+
+        loadPage.waitTillError()
+
         loadPage.assertErrorState()
         activityScenarioRule.scenario.recreate()
         loadPage.assertErrorState()
