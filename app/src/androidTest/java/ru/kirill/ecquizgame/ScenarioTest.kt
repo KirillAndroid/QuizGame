@@ -8,6 +8,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import ru.kirill.ecquizgame.game.GameOverPage
 import ru.kirill.ecquizgame.game.GamePage
+import ru.kirill.ecquizgame.load.LoadPage
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -32,6 +33,7 @@ class ScenarioTest {
 
     @Test
     fun caseNumber1() {
+        caseNumber4()
         gamePage.assertAskedQuestionState()
         activityScenarioRule.scenario.recreate()
 
@@ -46,6 +48,7 @@ class ScenarioTest {
 
     @Test
     fun caseNumber2() {
+        caseNumber4()
         gamePage.assertAskedQuestionState()
         activityScenarioRule.scenario.recreate()
 
@@ -73,6 +76,7 @@ class ScenarioTest {
 
     @Test
     fun caseNumber3() {
+        caseNumber4()
         gamePage.assertAskedQuestionState()
         activityScenarioRule.scenario.recreate()
 
@@ -113,6 +117,7 @@ class ScenarioTest {
         gameOverPage.assertNotVisible()
 
         setUp()
+        caseNumber4()
 
 //        gamePage = GamePage(
 //            question = "What color is the blood",
@@ -160,6 +165,7 @@ class ScenarioTest {
         gameOverPage.assertNotVisible()
 
         setUp()
+        caseNumber4()
 
 //        gamePage = GamePage(
 //            question = "What color is the white house",
@@ -201,14 +207,10 @@ class ScenarioTest {
             correct = 1, incorrect = 1
         )
         gameOverPage.assertGameOverState()
-
-
-
-
     }
 
     @Test
-    fun testCase4() {
+    fun caseNumber4() {
         val loadPage = LoadPage()
 
         activityScenarioRule.scenario.recreate()
