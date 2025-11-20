@@ -48,7 +48,7 @@ class VisibilityStateSaved : View.BaseSavedState {
 }
 
 data class VisibilityState(private val visibility: Int) : Serializable {
-    fun update(button: VisibilityButton) {
-        button.update(visibility)
+    fun update(updateVisibility: UpdateVisibility) {
+        updateVisibility.update(visibility)
     }
 }

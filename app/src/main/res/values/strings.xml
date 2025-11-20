@@ -4,4 +4,7 @@
     <string name="next">next</string>
     <string name="newgame">NewGame</string>
     <string name="statistics">Statistics: \n Correct = %d, Incorrect = %d</string>
+    <string name="noInternetText">No internet connection</string>
+    <string name="retry">Retry</string>
+
 </resources>
